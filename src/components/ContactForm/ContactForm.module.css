@@ -1,0 +1,25 @@
+.form {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 80%;
+  padding-left: 15px;
+}
+
+.formLabel {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.formInput {
+  width: 60%;
+  margin: 5px 0;
+}
+
+.formButton {
+  width: 25%;
+  height: 30px;
+  margin: 20px 0;
+  cursor: pointer;
+}
