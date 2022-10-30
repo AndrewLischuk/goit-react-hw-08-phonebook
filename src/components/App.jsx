@@ -15,19 +15,17 @@ class App extends Component {
     const checkByName = this.state.contacts.find(
       user => user.name.toLowerCase() === normalizedName
     );
-    {
-      if (checkByName) {
-        alert(`${name} is already in contacts`);
-      } else {
-        const contact = {
-          name,
-          id,
-          number,
-        };
-        this.setState(({ contacts }) => ({
-          contacts: [contact, ...contacts],
-        }));
-      }
+    if (checkByName) {
+      alert(`${name} is already in contacts`);
+    } else {
+      const contact = {
+        name,
+        id,
+        number,
+      };
+      this.setState(({ contacts }) => ({
+        contacts: [contact, ...contacts],
+      }));
     }
   };
 
