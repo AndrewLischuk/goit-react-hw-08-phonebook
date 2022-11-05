@@ -1,4 +1,5 @@
 import styles from '../Filter/Filter.module.css';
+import PropTypes from 'prop-types';
 
 export const Filter = ({ filterChange }) => {
   return (
@@ -13,4 +14,8 @@ export const Filter = ({ filterChange }) => {
       />
     </>
   );
+};
+
+Filter.prototypes = {
+  filterChange: PropTypes.func,
 };

@@ -1,4 +1,5 @@
 import styles from './ContactsList.module.css';
+import PropTypes from 'prop-types';
 
 export const ContactsList = ({ contacts, deleteContact }) => (
   <ul className={styles.contactsList}>
@@ -14,3 +15,8 @@ export const ContactsList = ({ contacts, deleteContact }) => (
     })}
   </ul>
 );
+
+ContactsList.prototypes = {
+  contacts: PropTypes.array,
+  deleteContact: PropTypes.func,
+};
