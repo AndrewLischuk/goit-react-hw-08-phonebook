@@ -16,7 +16,7 @@ export const ContactsList = ({ contacts, deleteContact }) => (
   </ul>
 );
 
-ContactsList.prototypes = {
+ContactsList.propTypes = {
   contacts: PropTypes.array,
   deleteContact: PropTypes.func,
 };

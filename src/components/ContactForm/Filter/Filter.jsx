@@ -16,6 +16,6 @@ export const Filter = ({ filterChange }) => {
   );
 };
 
-Filter.prototypes = {
+Filter.propTypes = {
   filterChange: PropTypes.func,
 };

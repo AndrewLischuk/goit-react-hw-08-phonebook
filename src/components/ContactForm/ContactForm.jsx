@@ -74,7 +74,7 @@ class ContactForm extends Component {
   }
 }
 
-ContactForm.prototypes = {
+ContactForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
