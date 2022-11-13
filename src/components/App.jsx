@@ -5,29 +5,19 @@ import { ContactsList } from './ContactsList/ContactsList';
 import { Section } from './Section/Section';
 
 const App = () => {
-  const INITIAL_CONTACTS = [
-    {
-      name: 'Tom',
-      number: 123124,
-      id: 'YZwpeN',
-    },
-  ];
-
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    console.log('did mount');
     const localContacts = localStorage.getItem('contacts');
     const parsedContacts = JSON.parse(localContacts);
     if (parsedContacts) {
       setContacts(parsedContacts);
+      console.log(parsedContacts);
     }
   }, []);
 
   useEffect(() => {
-    console.log('did update');
-
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
