@@ -13,7 +13,6 @@ const App = () => {
     const parsedContacts = JSON.parse(localContacts);
     if (parsedContacts) {
       setContacts(parsedContacts);
-      console.log(parsedContacts);
     }
   }, []);
 
