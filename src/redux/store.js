@@ -1,10 +1,16 @@
-import { configureStore, createReducer } from '@reduxjs/toolkit';
+import { configureStore, createAction, createReducer } from '@reduxjs/toolkit';
 
-const phoneReducer = createReducer(0, {});
+export const addPhoneContact = createAction('contacts/Phone');
+export const deletePhoneContact = createAction('contacts/deleteContact');
 
-export const store = () =>
-  configureStore({
-    reducer: {
-      contacts: phoneReducer,
-    },
-  });
+const phoneReducer = createReducer([], {
+  [addPhoneContact]: (state, action) => [action.payload, ...state],
+  [deletePhoneContact]: (state, action) =>
+    state.filter(contact => contact.id !== action.payload),
+});
+
+export const store = configureStore({
+  reducer: {
+    contacts: phoneReducer,
+  },
+});

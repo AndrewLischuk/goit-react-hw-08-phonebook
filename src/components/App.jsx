@@ -1,24 +1,29 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPhoneContact } from 'redux/store';
 import ContactForm from './ContactForm/ContactForm';
 import { Filter } from './ContactForm/Filter/Filter';
 import { ContactsList } from './ContactsList/ContactsList';
 import { Section } from './Section/Section';
 
 const App = () => {
-  const [contacts, setContacts] = useState([]);
+  // const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    const localContacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(localContacts);
-    if (parsedContacts) {
-      setContacts(parsedContacts);
-    }
-  }, []);
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   const localContacts = localStorage.getItem('contacts');
+  //   const parsedContacts = JSON.parse(localContacts);
+  //   if (parsedContacts) {
+  //     dispatch(parsedContacts);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   function addContact(name, id, number) {
     const normalizedName = name.toLowerCase();
@@ -34,7 +39,7 @@ const App = () => {
         id,
         number,
       };
-      setContacts(prev => [contact, ...prev]);
+      dispatch(addPhoneContact(contact));
     }
   }
 
@@ -49,10 +54,6 @@ const App = () => {
     );
   };
 
-  const deleteContact = id => {
-    setContacts(prev => prev.filter(contact => contact.id !== id));
-  };
-
   return (
     <>
       <Section title={'Phonebook'}>
@@ -60,10 +61,7 @@ const App = () => {
       </Section>
       <Section title={'Contacts'}>
         <Filter filterChange={filterChange} />
-        <ContactsList
-          contacts={getFilteredContacts()}
-          deleteContact={deleteContact}
-        />
+        <ContactsList contacts={getFilteredContacts()} />
       </Section>
     </>
   );
