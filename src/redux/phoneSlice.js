@@ -10,6 +10,11 @@ export const phoneSlice = createSlice({
       number: 1245654,
       id: 2321,
     },
+    {
+      name: 'Jommy',
+      number: 1286545654,
+      id: 2376521,
+    },
   ],
   reducers: {
     addPhoneContact(state, action) {
@@ -29,3 +34,5 @@ const persistConfig = {
 export const phoneReducer = persistReducer(persistConfig, phoneSlice.reducer);
 
 export const { addPhoneContact, deletePhoneContact } = phoneSlice.actions;
+
+export const getContacts = state => state.contacts;

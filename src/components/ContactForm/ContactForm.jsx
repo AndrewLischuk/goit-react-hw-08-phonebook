@@ -3,7 +3,7 @@ import styles from '../ContactForm/ContactForm.module.css';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPhoneContact } from 'redux/phoneSlice';
+import { addPhoneContact, getContacts } from 'redux/phoneSlice';
 
 const ContactForm = () => {
   const [userName, setName] = useState('');
@@ -11,7 +11,7 @@ const ContactForm = () => {
   const [id, setId] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(getContacts);
 
   const onChangeInput = e => {
     const { name, value, id } = e.currentTarget;
