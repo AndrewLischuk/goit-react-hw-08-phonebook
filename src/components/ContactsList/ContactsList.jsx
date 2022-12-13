@@ -1,7 +1,7 @@
 import styles from './ContactsList.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deletePhoneContact } from 'redux/store';
+import { deletePhoneContact } from 'redux/phoneSlice';
 
 export const ContactsList = ({ contacts }) => {
   const dispatch = useDispatch();
@@ -26,5 +26,4 @@ export const ContactsList = ({ contacts }) => {
 
 ContactsList.propTypes = {
   contacts: PropTypes.array,
-  deleteContact: PropTypes.func,
 };

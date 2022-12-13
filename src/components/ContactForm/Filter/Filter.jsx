@@ -1,7 +1,14 @@
 import styles from '../Filter/Filter.module.css';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { filterValue } from 'redux/filterSlice';
 
-export const Filter = ({ filterChange }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+
+  const filterChange = e => {
+    dispatch(filterValue(e.currentTarget.value));
+  };
+
   return (
     <>
       <label className={styles.filterLabel}>Filter by name</label>
@@ -14,8 +21,4 @@ export const Filter = ({ filterChange }) => {
       />
     </>
   );
-};
-
-Filter.propTypes = {
-  filterChange: PropTypes.func,
 };
