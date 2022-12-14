@@ -9,25 +9,24 @@ export const phoneSlice = createSlice({
       {
         name: 'Tommy',
         number: 1245654,
-        id: 2321,
+        id: '2321B',
       },
       {
         name: 'Johny',
         number: 1286545654,
-        id: 2376521,
+        id: '2321C',
       },
     ],
   },
   reducers: {
     addPhoneContact(state, action) {
-      console.log(state);
-      // return [action.payload, ...state.phoneBook];
-      // state.phoneBook.contacts.push(action.payload);
+      state.contacts.push(action.payload);
     },
     deletePhoneContact(state, action) {
-      console.log(state);
-      console.log(action.payload);
-      return state.filter(contact => contact.id !== action.payload);
+      const index = state.contacts.findIndex(
+        contact => contact.id === action.payload
+      );
+      state.contacts.splice(index, 1);
     },
   },
 });
