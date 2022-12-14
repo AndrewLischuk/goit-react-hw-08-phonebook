@@ -5,7 +5,7 @@ import { phoneReducer } from './phoneSlice';
 
 export const store = configureStore({
   reducer: {
-    contacts: phoneReducer,
+    phoneBook: phoneReducer,
     filter: filterSlice.reducer,
   },
 });
