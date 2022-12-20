@@ -9,11 +9,12 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { filterReducer } from './filterSlice';
-import { phoneReducer } from './phoneSlice';
+import { contactReducer, phoneReducer } from './phoneSlice';
 
 export const store = configureStore({
   reducer: {
-    phoneBook: phoneReducer,
+    // phoneBook: phoneReducer,
+    phoneBook: contactReducer,
     filter: filterReducer,
   },
   middleware: getDefaultMiddleware =>
@@ -24,4 +25,4 @@ export const store = configureStore({
     }),
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);

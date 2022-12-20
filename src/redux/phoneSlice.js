@@ -5,39 +5,50 @@ import storage from 'redux-persist/lib/storage';
 export const phoneSlice = createSlice({
   name: 'phoneBook',
   initialState: {
-    contacts: [
-      {
-        name: 'Tommy',
-        number: 1245654,
-        id: '2321B',
-      },
-      {
-        name: 'Johny',
-        number: 1286545654,
-        id: '2321C',
-      },
-    ],
+    items: [],
+    isLoading: false,
+    error: null,
   },
   reducers: {
-    addPhoneContact(state, action) {
-      state.contacts.push(action.payload);
+    fetchingInProgress(state) {
+      state.isLoading = true;
     },
-    deletePhoneContact(state, action) {
-      const index = state.contacts.findIndex(
-        contact => contact.id === action.payload
-      );
-      state.contacts.splice(index, 1);
+    fetchingSuccess(state, action) {
+      state.isLoading = false;
+      state.items = action.payload;
+      state.error = null;
     },
+    fetchingError(state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    // addPhoneContact(state, action) {
+    //   state.contacts.push(action.payload);
+    // },
+    // deletePhoneContact(state, action) {
+    //   const index = state.contacts.findIndex(
+    //     contact => contact.id === action.payload
+    //   );
+    //   state.contacts.splice(index, 1);
+    // },
   },
 });
 
-const persistConfig = {
-  key: 'phoneBook',
-  storage,
-};
+// const persistConfig = {
+//   key: 'phoneBook',
+//   storage,
+// };
 
-export const phoneReducer = persistReducer(persistConfig, phoneSlice.reducer);
+// export const phoneReducer = persistReducer(persistConfig, phoneSlice.reducer);
 
-export const { addPhoneContact, deletePhoneContact } = phoneSlice.actions;
+export const contactReducer = phoneSlice.reducer;
 
-export const getContacts = state => state.phoneBook.contacts;
+export const {
+  fetchingInProgress,
+  fetchingSuccess,
+  fetchingError,
+  // addPhoneContact,
+  // deletePhoneContact,
+} = phoneSlice.actions;
+
+export const getContacts = state => state.phoneBook;

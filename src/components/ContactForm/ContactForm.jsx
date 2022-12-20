@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPhoneContact, getContacts } from 'redux/phoneSlice';
+import { addContact } from 'redux/operations';
 
 const ContactForm = () => {
   const [userName, setName] = useState('');
@@ -11,7 +12,7 @@ const ContactForm = () => {
   const [id, setId] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const { items: contacts } = useSelector(getContacts);
 
   const onChangeInput = e => {
     const { name, value, id } = e.currentTarget;
@@ -24,7 +25,7 @@ const ContactForm = () => {
     }
   };
 
-  function addContact(name, id, number) {
+  function addContactToPhone(name, id, number) {
     const normalizedName = name.toLowerCase();
 
     const checkByName = contacts.find(
@@ -38,13 +39,13 @@ const ContactForm = () => {
         id,
         number,
       };
-      dispatch(addPhoneContact(contact));
+      dispatch(addContact(contact));
     }
   }
 
   const formSubmit = e => {
     e.preventDefault();
-    addContact(userName, id, number);
+    addContactToPhone(userName, id, number);
     setName('');
     setNumber('');
     setId('');
