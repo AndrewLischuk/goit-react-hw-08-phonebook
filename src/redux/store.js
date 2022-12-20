@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
-  persistStore,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -9,11 +8,10 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { filterReducer } from './filterSlice';
-import { contactReducer, phoneReducer } from './phoneSlice';
+import { contactReducer } from './phoneSlice';
 
 export const store = configureStore({
   reducer: {
-    // phoneBook: phoneReducer,
     phoneBook: contactReducer,
     filter: filterReducer,
   },
@@ -24,5 +22,3 @@ export const store = configureStore({
       },
     }),
 });
-
-// export const persistor = persistStore(store);
