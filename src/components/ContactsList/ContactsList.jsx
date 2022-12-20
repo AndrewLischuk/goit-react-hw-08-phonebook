@@ -16,7 +16,7 @@ export const ContactsList = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  console.log(contacts);
+  // console.log(contacts);
 
   const normalizedFilter = filtered.toLowerCase();
   const filteredContacts = contacts.filter(contact =>
@@ -26,7 +26,11 @@ export const ContactsList = () => {
   return (
     <ul className={styles.contactsList}>
       {isLoading && <span>Loading...</span>}
-      {error && <span>Error</span>}
+      {error && (
+        <span>
+          {error.message} - {error.code}`
+        </span>
+      )}
       {filteredContacts.length > 0 &&
         filteredContacts.map(({ name, id, number }) => {
           return (
