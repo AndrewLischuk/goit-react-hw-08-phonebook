@@ -25,7 +25,7 @@ const ContactForm = () => {
     }
   };
 
-  function addContactToPhone(name, id, number) {
+  function addContactToPhone(name, number, id) {
     const normalizedName = name.toLowerCase();
 
     const checkByName = contacts.find(
@@ -36,8 +36,8 @@ const ContactForm = () => {
     } else {
       const contact = {
         name,
-        id,
         number,
+        id,
       };
       dispatch(addContact(contact));
     }
@@ -45,7 +45,7 @@ const ContactForm = () => {
 
   const formSubmit = e => {
     e.preventDefault();
-    addContactToPhone(userName, id, number);
+    addContactToPhone(userName, number, id);
     setName('');
     setNumber('');
     setId('');
