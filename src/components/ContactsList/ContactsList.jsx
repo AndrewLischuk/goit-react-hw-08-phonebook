@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/phoneSlice';
 import { getFilter } from 'redux/filterSlice';
-import { deleteContact } from 'redux/operations';
+import { deleteContact, fetchContacts } from 'redux/operations';
+import { useEffect } from 'react';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const { items: contacts, isLoading, error } = useSelector(getContacts);
   const filtered = useSelector(getFilter);
