@@ -4,16 +4,7 @@ import {
   userLogin,
   userLogOut,
   fetchCurrentUser,
-} from './operations';
-
-// const handlePending = state => {
-//   state.isLoading = true;
-// };
-
-// const handleRejected = (state, action) => {
-//   state.isLoading = false;
-//   state.error = action.payload;
-// };
+} from './authOperations/authOperations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -48,5 +39,3 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-
-export const getIsLoggedIn = state => state.auth.isLogedIn;

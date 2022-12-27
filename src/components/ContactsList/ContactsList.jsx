@@ -1,10 +1,12 @@
 import styles from './ContactsList.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/phoneSlice';
-import { getFilter } from 'redux/filterSlice';
-import { deleteContact, fetchContacts } from 'redux/operations';
+import {
+  deleteContact,
+  fetchContacts,
+} from 'redux/contactsOperations/contactsOperations';
 import { useEffect } from 'react';
+import { getContacts, getFilter } from 'redux/selectors';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();

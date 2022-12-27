@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchContacts, fetchCurrentUser } from 'redux/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from 'redux/contactsOperations/contactsOperations';
 import { Appbar } from './Appbar/Appbar';
 import ContactForm from './ContactForm/ContactForm';
 import { Filter } from './ContactForm/Filter/Filter';
@@ -10,6 +10,8 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { RegistrationForm } from './RegistrationForm/RegistrationForm';
 import { LoginForm } from './LoginForm/LoginForm';
+import { fetchCurrentUser } from 'redux/authOperations/authOperations';
+import { getIsLoggedIn } from 'redux/selectors';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,6 +21,8 @@ const App = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  const isLoggedIn = useSelector(getIsLoggedIn);
+
   return (
     <>
       <Routes>
@@ -27,9 +31,15 @@ const App = () => {
             index
             element={
               <Section title={'Phonebook'}>
-                <ContactForm />
-                <Filter />
-                <ContactsList />
+                {isLoggedIn ? (
+                  <>
+                    <ContactForm />
+                    <Filter />
+                    <ContactsList />
+                  </>
+                ) : (
+                  <p>Please, log in first</p>
+                )}
               </Section>
             }
           ></Route>
