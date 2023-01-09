@@ -11,18 +11,3 @@ export const PublicRoute = ({
   const shouldRedirect = isLoggedIn && restricted;
   return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
 };
-
-// export const PublicRoute = ({
-//   children,
-//   redirectTo = '/',
-//   restricted = false,
-//   ...routerProps
-// }) => {
-//   const isLoggedIn = useSelector(getIsLoggedIn);
-//   const shouldRedirect = isLoggedIn && restricted;
-//   return (
-//     <Route {...routerProps}>
-//       {shouldRedirect ? <Navigate to={redirectTo} /> : children}
-//     </Route>
-//   );
-// };
