@@ -1,0 +1,8 @@
+.container {
+  padding: 0 20px;
+  margin: 0 auto;
+  min-width: 70%;
+  display: flex;
+  justify-content: space-between;
+  /* color: #24a00b; */
+}

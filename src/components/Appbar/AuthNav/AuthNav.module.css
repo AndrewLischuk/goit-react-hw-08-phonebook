@@ -1,0 +1,36 @@
+.auth {
+  display: flex;
+  align-items: center;
+}
+
+.userMenu {
+  display: flex;
+}
+.userMenu span {
+  font-size: 25px;
+  padding: 10px;
+  display: flex;
+  color: #ffffff;
+}
+
+.userLogoutBtn {
+  width: 100px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 34px;
+  margin: 5px;
+  padding: 10px;
+  text-decoration: none;
+  text-align: center;
+  background-color: #f4eeee;
+  color: #010101;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  outline: none;
+}
+
+.userLogoutBtn:hover {
+  border: 3px solid #24a00b;
+}
