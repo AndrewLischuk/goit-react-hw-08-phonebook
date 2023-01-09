@@ -1,4 +1,3 @@
-import { Container } from 'components/Container/Container';
 import { useSelector } from 'react-redux';
 import { getIsLoggedIn, getUserData } from 'redux/selectors';
 import * as SC from '../../components/Appbar/Appbar.styled';
@@ -10,7 +9,6 @@ export const Home = () => {
 
   return (
     <div className={styles.home}>
-      {/* <h2>This is Home-page</h2> */}
       {isLoggedIn ? (
         <div>
           <p>
