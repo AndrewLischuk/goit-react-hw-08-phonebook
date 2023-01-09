@@ -3,7 +3,7 @@ import {
   addContact,
   deleteContact,
   fetchContacts,
-} from './contactsOperations/contactsOperations';
+} from '../contactsOperations/contactsOperations';
 
 const handlePending = state => {
   state.isLoading = true;

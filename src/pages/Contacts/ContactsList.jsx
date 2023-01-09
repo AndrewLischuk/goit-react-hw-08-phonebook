@@ -7,6 +7,7 @@ import {
 } from 'redux/contactsOperations/contactsOperations';
 import { useEffect } from 'react';
 import { getContacts, getFilter } from 'redux/selectors';
+import { NavLink } from 'react-router-dom';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
@@ -24,27 +25,30 @@ export const ContactsList = () => {
   );
 
   return (
-    <ul className={styles.contactsList}>
-      {isLoading && <span>Loading...</span>}
-      {error && (
-        <span>
-          {error.message} - {error.code}`
-        </span>
-      )}
-      {filteredContacts.length > 0 &&
-        filteredContacts.map(({ name, id, number }) => {
-          return (
-            <li key={id}>
-              <div className={styles.contactItem}>
-                {name}: {number}
-                <button onClick={() => dispatch(deleteContact(id))}>
-                  Delete
-                </button>
-              </div>
-            </li>
-          );
-        })}
-    </ul>
+    <>
+      <ul className={styles.contactsList}>
+        {isLoading && <span>Loading...</span>}
+        {error && (
+          <span>
+            {error.message} - {error.code}`
+          </span>
+        )}
+        {filteredContacts.length > 0 &&
+          filteredContacts.map(({ name, id, number }) => {
+            return (
+              <li key={id}>
+                <div className={styles.contactItem}>
+                  {name}: {number}
+                  <button onClick={() => dispatch(deleteContact(id))}>
+                    Delete
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+      </ul>
+      <NavLink to="/add-contact">Add Contact</NavLink>
+    </>
   );
 };
 

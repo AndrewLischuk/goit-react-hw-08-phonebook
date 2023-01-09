@@ -4,7 +4,7 @@ import {
   userLogin,
   userLogOut,
   fetchCurrentUser,
-} from './authOperations/authOperations';
+} from '../authOperations/authOperations';
 
 const initialState = {
   user: { name: null, email: null },
