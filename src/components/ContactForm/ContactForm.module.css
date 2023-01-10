@@ -1,8 +1,14 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .form {
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  border: 1px solid black;
+  border: 3px solid #257413;
   width: 80%;
   padding-left: 15px;
 }
@@ -10,17 +16,35 @@
 .formLabel {
   margin-top: 15px;
   margin-bottom: 5px;
+  color: #257413;
 }
 
 .formInput {
-  width: 60%;
+  padding: 5px;
+  width: 95%;
   height: 25px;
-  margin: 5px 0;
+  display: inline-block;
+  font: inherit;
+  font-size: 20px;
+  color: #257413;
+  border: none;
+  outline: none;
 }
 
 .formButton {
-  width: 25%;
-  height: 30px;
+  width: 120px;
+  height: 35px;
   margin: 20px 0;
   cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  background-color: #f4eeee;
+  color: #010101;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  outline: none;
+}
+
+.formButton:hover {
+  border: 3px solid #24a00b;
 }

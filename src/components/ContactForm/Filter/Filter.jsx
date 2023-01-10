@@ -10,7 +10,7 @@ export const Filter = () => {
   };
 
   return (
-    <>
+    <div className={styles.filter}>
       <label className={styles.filterLabel}>Filter by name</label>
       <input
         className={styles.filterInput}
@@ -18,7 +18,8 @@ export const Filter = () => {
         name="filter"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         onChange={filterChange}
+        placeholder="Start to enter the name"
       />
-    </>
+    </div>
   );
 };

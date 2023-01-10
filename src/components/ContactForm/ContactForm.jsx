@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsOperations/contactsOperations';
 import { getContacts } from 'redux/selectors';
+import { Section } from 'components/Section/Section';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const ContactForm = () => {
   const [userName, setName] = useState('');
@@ -49,45 +51,55 @@ const ContactForm = () => {
     setName('');
     setNumber('');
     setId('');
+    navigate('/contacts');
   };
+
+  // const redirect = () => {
+  //   // window.location = '/contacts';
+  //   return <Navigate to="/contacts" />;
+  // };
+
+  const navigate = useNavigate();
 
   const inputId = nanoid(6);
   return (
-    <>
-      <form className={styles.form} onSubmit={formSubmit}>
-        <label className={styles.formLabel} htmlFor={inputId}>
-          Name
-        </label>
-        <input
-          className={styles.formInput}
-          type="text"
-          name="name"
-          id={inputId}
-          value={userName}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          onChange={onChangeInput}
-        />
-        <label className={styles.formLabel} htmlFor={inputId}>
-          Number
-        </label>
-        <input
-          className={styles.formInput}
-          type="tel"
-          name="number"
-          id={inputId}
-          value={number}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          onChange={onChangeInput}
-        />
-        <button className={styles.formButton} type="submit">
-          Add contact
-        </button>
-      </form>
-    </>
+    <Section>
+      <div className={styles.wrapper}>
+        <form className={styles.form} onSubmit={formSubmit}>
+          <label className={styles.formLabel} htmlFor={inputId}>
+            Name
+          </label>
+          <input
+            className={styles.formInput}
+            type="text"
+            name="name"
+            id={inputId}
+            value={userName}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+            onChange={onChangeInput}
+          />
+          <label className={styles.formLabel} htmlFor={inputId}>
+            Number
+          </label>
+          <input
+            className={styles.formInput}
+            type="tel"
+            name="number"
+            id={inputId}
+            value={number}
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            onChange={onChangeInput}
+          />
+          <button className={styles.formButton} type="submit">
+            Add contact
+          </button>
+        </form>
+      </div>
+    </Section>
   );
 };
 

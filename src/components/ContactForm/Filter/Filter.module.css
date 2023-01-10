@@ -1,10 +1,29 @@
+.filter {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
 .filterLabel {
   margin-top: 15px;
   margin-bottom: 5px;
+  color: #257413;
 }
 
 .filterInput {
-  width: 60%;
+  padding: 5px;
+  width: 100%;
   height: 25px;
-  margin: 5px 0;
+  display: inline-block;
+  font: inherit;
+  font-size: 20px;
+  color: #257413;
+  border: none;
+  outline: none;
+}
+.filterInput::placeholder {
+  color: #257413;
+  font: inherit;
+  font-size: 18px;
 }
