@@ -6,12 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsOperations/contactsOperations';
 import { getContacts } from 'redux/selectors';
 import { Section } from 'components/Section/Section';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ContactForm = () => {
   const [userName, setName] = useState('');
   const [number, setNumber] = useState('');
   const [id, setId] = useState('');
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const { items: contacts } = useSelector(getContacts);
@@ -53,13 +55,6 @@ const ContactForm = () => {
     setId('');
     navigate('/contacts');
   };
-
-  // const redirect = () => {
-  //   // window.location = '/contacts';
-  //   return <Navigate to="/contacts" />;
-  // };
-
-  const navigate = useNavigate();
 
   const inputId = nanoid(6);
   return (
