@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/contactsOperations/contactsOperations';
 import ContactForm from './ContactForm/ContactForm';
 import { Filter } from './ContactForm/Filter/Filter';
 import { ContactsList } from '../pages/Contacts/ContactsList';
@@ -19,7 +18,6 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
-    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (

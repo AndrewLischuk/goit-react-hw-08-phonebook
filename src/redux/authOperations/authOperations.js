@@ -60,6 +60,7 @@ export const fetchCurrentUser = createAsyncThunk(
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('token is undefined');
     }
+
     token.set(persistedToken);
     try {
       const { data } = await axios.get('/users/current');
