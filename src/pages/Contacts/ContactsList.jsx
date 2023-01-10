@@ -33,6 +33,9 @@ export const ContactsList = () => {
             {error.message} - {error.code}`
           </span>
         )}
+        {filteredContacts.length === 0 && (
+          <span>There are no contacts in your list yet</span>
+        )}
         {filteredContacts.length > 0 &&
           filteredContacts.map(({ name, id, number }) => {
             return (
