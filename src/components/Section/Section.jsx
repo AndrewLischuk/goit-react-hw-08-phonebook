@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 export const Section = ({ title, children }) => {
   return (
     <div className={styles.section}>
-      <h2>{title}</h2>
-      {children}
+      <div className={styles.wrapper}>
+        <h2>{title}</h2>
+        {children}
+      </div>
     </div>
   );
 };

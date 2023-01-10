@@ -9,6 +9,12 @@
   font-weight: 600;
   width: 100%;
 }
+.wrapper {
+  margin: 20px auto;
+  min-width: 60%;
+  min-height: 400px;
+  background-color: #ffffff59;
+}
 h2 {
   margin: 0;
   padding: 10px 0;
