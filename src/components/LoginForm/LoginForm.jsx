@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { userLogin } from 'redux/authOperations/authOperations';
+import { Section } from 'components/Section/Section';
 
 export const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -29,31 +30,33 @@ export const LoginForm = () => {
   };
 
   return (
-    <>
-      <form className={styles.form} onSubmit={formSubmit}>
-        <label className={styles.formLabel}>Email</label>
-        <input
-          className={styles.formInput}
-          type="email"
-          name="email"
-          value={email}
-          required
-          onChange={onChangeInput}
-        />
-        <label className={styles.formLabel}>Password</label>
-        <input
-          className={styles.formInput}
-          type="password"
-          name="password"
-          value={password}
-          required
-          onChange={onChangeInput}
-        />
-        <button className={styles.formButton} type="submit">
-          Log In
-        </button>
-      </form>
-    </>
+    <Section>
+      <div className={styles.wrapper}>
+        <form className={styles.form} onSubmit={formSubmit}>
+          <label className={styles.formLabel}>Email</label>
+          <input
+            className={styles.formInput}
+            type="email"
+            name="email"
+            value={email}
+            required
+            onChange={onChangeInput}
+          />
+          <label className={styles.formLabel}>Password</label>
+          <input
+            className={styles.formInput}
+            type="password"
+            name="password"
+            value={password}
+            required
+            onChange={onChangeInput}
+          />
+          <button className={styles.formButton} type="submit">
+            Log In
+          </button>
+        </form>
+      </div>
+    </Section>
   );
 };
 
